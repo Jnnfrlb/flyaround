@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class PlaneModel
 {
     /**
+     * @return string
+     */
+    public function __toString ()
+    {
+        // Return the Reservation object with "[model]", when __toString is called
+        return $this->model. " ".$this->manufacturer;
+    }
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -187,4 +196,3 @@ class PlaneModel
         return $this->isAvailable;
     }
 }
-
