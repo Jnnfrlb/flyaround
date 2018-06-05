@@ -19,7 +19,7 @@ class User
     public function __toString ()
     {
         // Return the User object with "[firstName] .  [lastName]" format, when __toString is called
-        return $this->firstName. " " . $this->lastName;
+        return $this->firstName. ' ' . $this->lastName;
     }
 
     /**

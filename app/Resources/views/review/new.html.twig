@@ -2,4 +2,18 @@
 
 {% block body %}
 <h1>Formulaire</h1>
+
+    {# app/Resources/views/default/new.html.twig #}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Create new Review"/>
+    {{ form_end(form) }}
+    <br>
+
+    <ul>
+        <li>
+            <a href="{{ path("review_index") }}">Return to the list</a>
+        </li>
+    </ul>
+
 {% endblock %}

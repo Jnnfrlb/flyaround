@@ -22,7 +22,7 @@ class Review
     public function __toString ()
     {
         // Return the Review object with "[id]", when __toString is called
-        return $this->id ." ";
+        return $this->id .' ';
     }
 
     /*
@@ -41,14 +41,12 @@ class Review
     /**
      * @var int
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
-     * @ORM\Column(name="user_rated_id", type="integer")
      */
     private $userRatedId;
 
     /**
      * @var int
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="$reviewAuthor")
-     * @ORM\Column(name="review_author_id", type="integer")
      */
     private $reviewAuthorId;
 
