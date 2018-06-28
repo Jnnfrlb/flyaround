@@ -5,10 +5,15 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\Flight;
+use AppBundle\Entity\PlaneModel;
+use Doctrine\ORM\Mapping as ORM;
+
 class FlightInfo
 {
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $unit;
 
@@ -41,7 +46,7 @@ class FlightInfo
         $dLon = deg2rad($longitudeTo - $longitudeFrom);
         $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($latitudeFrom)) * cos(deg2rad($latitudeTo)) * sin($dLon/2) * sin($dLon/2);
         $c = 2 * asin(sqrt($a));
-        switch ($this->_unit) {
+        switch ($this->unit) {
             case 'km':
                 $d = $c * $earth_radius;
                 break;
@@ -53,5 +58,17 @@ class FlightInfo
                 break;
         }
         return $d;
+    }
+
+    /**
+     * @param $cruiseSpeed
+     * @param $distanceVol
+     * @return float
+     */
+    public function getTime($cruiseSpeed, $distanceVol)
+    {
+        $dureeVol = $distanceVol / $cruiseSpeed;
+
+        return $dureeVol;
     }
 }
